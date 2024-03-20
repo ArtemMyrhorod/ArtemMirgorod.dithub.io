@@ -1,0 +1,28 @@
+function generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
+  const lowercaseChars = 'qwertyuioplkjhgfdsazxcvbnm';
+  const uppercaseChars = 'QWERTYUIOPLKJHGFDSAZXCVBNM';
+  const numbers = '1234567890';
+  const symbols = '`/.,|!@#$%^&*()_+=_-';
+
+  let allowedChars = '';
+  let password = '';
+  allowedChars += includeLowercase ? lowercaseChars : '';
+  allowedChars += includeUppercase ? uppercaseChars: '';
+  allowedChars += includeNumbers ? numbers : '';
+  allowedChars += includeSymbols ? symbols : '';
+for ( let i = 0; i < length; i++) {
+  let randomNumber = Math.floor(Math.random() * allowedChars.length) + 1;
+ password += allowedChars.charAt(randomNumber)
+}
+  return password;
+}
+
+const passwordLength = 12;
+const includeLowercase = true;
+const includeUppercase = true;
+const includeNumbers = true;
+const includeSymbols = true;
+
+const password = generatePassword(passwordLength, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
+
+console.log(`Your password is ${password}`);
